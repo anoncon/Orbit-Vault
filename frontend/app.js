@@ -57,6 +57,7 @@ const elements = {
   connectButton: document.getElementById("connect-button"),
   seedButton: document.getElementById("seed-button"),
   walletLabel: document.getElementById("wallet-label"),
+  backendNote: document.getElementById("backend-note"),
   vaultCount: document.getElementById("vault-count"),
   savedTotal: document.getElementById("saved-total"),
   averageProgress: document.getElementById("average-progress"),
@@ -76,6 +77,7 @@ const elements = {
 setDefaultDate();
 bindEvents();
 render();
+syncBackendStatus();
 
 function loadState() {
   const fallback = {
@@ -236,6 +238,20 @@ function renderHeader() {
   elements.savedTotal.textContent = `${formatAmount(totalSaved)} units`;
   elements.averageProgress.textContent = `${average}%`;
   elements.statusChip.textContent = state.vaults.length ? "Prototype vaults loaded" : "Waiting for demo data";
+}
+
+async function syncBackendStatus() {
+  try {
+    const response = await fetch("/api/status");
+    if (!response.ok) {
+      throw new Error("status request failed");
+    }
+
+    const payload = await response.json();
+    elements.backendNote.textContent = `Backend status: ${payload.status} · ${payload.network}`;
+  } catch {
+    elements.backendNote.textContent = "Backend status: frontend-only demo mode";
+  }
 }
 
 function renderVaults() {

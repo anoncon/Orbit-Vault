@@ -301,6 +301,12 @@ body::after {
   font-size: 1.15rem;
 }
 
+.backend-note {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
 .metric-grid {
   flex-wrap: wrap;
 }
