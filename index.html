@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orbit Vault | Stellar Savings Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark">OV</div>
+          <div>
+            <p class="eyebrow">Stellar x Soroban Prototype</p>
+            <h1>Orbit Vault</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-button" id="seed-button">Load Demo Vaults</button>
+          <button class="primary-button" id="connect-button">Connect Demo Wallet</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Goal-based savings for communities and creators</p>
+            <h2>Build shared vaults on Stellar without shipping the full stack on day one.</h2>
+            <p class="hero-text">
+              Orbit Vault is a clean prototype for milestone savings, contribution circles,
+              and future Soroban-powered release logic. The current experience is intentionally
+              lightweight, but the product direction is clear.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#vault-form">Create a Vault</a>
+              <a class="ghost-button" href="#dashboard">See the Demo Dashboard</a>
+            </div>
+            <div class="hero-points">
+              <span>Vault goals in XLM</span>
+              <span>Shared contribution momentum</span>
+              <span>Upgradeable Soroban contract path</span>
+            </div>
+          </div>
+
+          <aside class="network-panel">
+            <div class="network-pill">Prototype Status</div>
+            <div class="network-card">
+              <p>Wallet</p>
+              <strong id="wallet-label">Not connected</strong>
+            </div>
+            <div class="metric-grid">
+              <article class="metric-card">
+                <p>Vaults</p>
+                <strong id="vault-count">0</strong>
+              </article>
+              <article class="metric-card">
+                <p>Demo Volume</p>
+                <strong id="saved-total">0 units</strong>
+              </article>
+              <article class="metric-card">
+                <p>Average Progress</p>
+                <strong id="average-progress">0%</strong>
+              </article>
+              <article class="metric-card">
+                <p>Live Status</p>
+                <strong>UI + Contract Stub</strong>
+              </article>
+            </div>
+          </aside>
+        </section>
+
+        <section class="feature-strip">
+          <article>
+            <p class="eyebrow">Why it works</p>
+            <h3>Strong enough for an application, open enough for contributors.</h3>
+          </article>
+          <article class="feature-list">
+            <div>
+              <strong>Clean MVP story</strong>
+              <p>Goal creation, contribution flow, local persistence, and a contract direction.</p>
+            </div>
+            <div>
+              <strong>Honest scope</strong>
+              <p>No fake backend, no fragile wallet wiring, no overpromised mainnet readiness.</p>
+            </div>
+            <div>
+              <strong>Real upgrade path</strong>
+              <p>Frontend can later switch from demo actions to Soroban contract invocations.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="workspace-grid" id="dashboard">
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Create a Vault</p>
+                <h3>Start a focused savings mission</h3>
+              </div>
+              <span class="panel-chip">Local demo flow</span>
+            </div>
+
+            <form id="vault-form" class="vault-form">
+              <label>
+                Vault name
+                <input id="title-input" type="text" maxlength="40" placeholder="Community Solar Fund" required />
+              </label>
+
+              <div class="field-row">
+                <label>
+                  Goal amount
+                  <input id="goal-input" type="number" min="10" step="10" placeholder="1500" required />
+                </label>
+                <label>
+                  Asset
+                  <select id="asset-input">
+                    <option value="XLM">XLM</option>
+                    <option value="USDC">USDC</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  Contribution rhythm
+                  <select id="cadence-input">
+                    <option value="Weekly">Weekly</option>
+                    <option value="Biweekly">Biweekly</option>
+                    <option value="Monthly">Monthly</option>
+                  </select>
+                </label>
+                <label>
+                  Target date
+                  <input id="date-input" type="date" required />
+                </label>
+              </div>
+
+              <label>
+                Story
+                <textarea id="story-input" rows="4" maxlength="160" placeholder="Fund a transparent shared goal with simple recurring deposits."></textarea>
+              </label>
+
+              <button class="primary-button full-width" type="submit">Create Demo Vault</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Protocol Roadmap</p>
+                <h3>What ships now and what comes next</h3>
+              </div>
+              <span class="panel-chip">Practical scope</span>
+            </div>
+
+            <div class="roadmap-list">
+              <article>
+                <strong>Today</strong>
+                <p>Interactive product UI, local state, seeded vaults, and a Soroban vault contract scaffold.</p>
+              </article>
+              <article>
+                <strong>Next</strong>
+                <p>Freighter wallet flow, testnet vault deployment, and event-backed contribution history.</p>
+              </article>
+              <article>
+                <strong>Later</strong>
+                <p>Group permissions, milestone releases, yield strategies, and public contribution pages.</p>
+              </article>
+            </div>
+
+            <div class="status-note">
+              <strong>Open-source angle</strong>
+              <p>
+                This repo is structured to invite contributors into wallet integration, testnet deployment,
+                and contract hardening without forcing a huge initial codebase.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <section class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Vault Board</p>
+                <h3>Saved goals</h3>
+              </div>
+              <span class="panel-chip" id="status-chip">Waiting for demo data</span>
+            </div>
+            <div id="vault-list" class="vault-list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Activity</p>
+                <h3>Recent demo actions</h3>
+              </div>
+              <span class="panel-chip">Local timeline</span>
+            </div>
+            <div id="activity-list" class="activity-list"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
